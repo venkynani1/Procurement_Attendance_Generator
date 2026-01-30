@@ -5,14 +5,14 @@
     id="attendance-form"
     ref="attendanceForm"
   >
-    <h1 class="text-center font-bold" style="background-color: #F0E7D8;padding: 8px;font-size: 19px;">Attendance Report Generator</h1>
+    <h1 class="text-center font-bold" style="background-color: #F0E7D8;padding: 8px;font-size: 19px;">Attendance Report Generator Procurement Team</h1>
     <div style="padding: 20px 30px;display: flex;gap: 20px;flex-direction: column;" v-if="!exportReady">
     <div class="form-control">
-      <label for="formAttendance">Teams Attendance</label>
+      <label for="formAttendance">Teams Attendance Excel File</label>
       <input type="file" id="formAttendance" multiple required/>
     </div>
     <div class="form-control">
-      <label for="">Have Nomination Sheet</label>
+      <label for="">Do you have Nomination Sheet?</label>
       <div style="display: flex;gap: 20px;align-items: center;">
       <div style="display: flex;gap: 20px;align-items: center;flex-direction: row-reverse;">
         <label for="nominationConfirmation1">Yes</label>
@@ -25,7 +25,7 @@
     </div>
     </div>
     <div class="form-control" v-if="selectOption !== 'No'">
-      <label for="nomination">Nominations</label>
+      <label for="nomination">Nominations File Upload</label>
       <input type="file" id="nomination" required />
     </div>
     <div class="form-control">
@@ -42,7 +42,7 @@
     </div>
   </div>
 <div class="extract-result" v-if="exportReady" style="padding: 20px;">
-  <p><span style="min-width: 150px;display:inline-block;">Total Nomination </span>: {{ selectOption === 'Yes' ? finalAttendanceWithNomination.length + finalAttendancedifference.length : finalAttendance.length }}</p>
+  <p><span style="min-width: 150px;display:inline-block;">Total Nominations </span>: {{ selectOption === 'Yes' ? finalAttendanceWithNomination.length + finalAttendancedifference.length : finalAttendance.length }}</p>
   <p><span style="min-width: 150px;display:inline-block;">Attended </span>: {{selectOption === 'Yes' ? finalAttendanceWithNomination.filter((employee)=>((employee.PRESENTCOUNT / employee.SESSIONCOUNT) * 100).toFixed(0) >= 50).length + finalAttendancedifference.filter((employee)=>((employee.PRESENTCOUNT / employee.SESSIONCOUNT) * 100).toFixed(0) >= 50).length : finalAttendance.filter((employee)=>((employee.PRESENTCOUNT / employee.SESSIONCOUNT) * 100).toFixed(0) >= 50).length }} </p>
   <p><span style="min-width: 150px;display:inline-block;">Not Attended </span>: {{selectOption === 'Yes' ? finalAttendanceWithNomination.filter((employee)=>((employee.PRESENTCOUNT / employee.SESSIONCOUNT) * 100).toFixed(0) < 50).length + finalAttendancedifference.filter((employee)=>(((employee.PRESENTCOUNT === undefined ? 0 : employee.PRESENTCOUNT) / employee.SESSIONCOUNT) * 100).toFixed(0) < 50).length : finalAttendance.filter((employee)=>((employee.PRESENTCOUNT / employee.SESSIONCOUNT) * 100).toFixed(0) < 50).length }} </p>
 </div>
@@ -50,7 +50,7 @@
     <div class="form-button" v-if="!loading" style="padding-bottom: 20px;">
       <button type="submit" v-if="finalAttendance.length === 0">Extract</button>
       <button @click="clearAttendance" v-else>Resubmit</button>
-      <button v-if="exportReady" @click="exportExcel">Export</button>
+      <button v-if="exportReady" @click="exportExcel">Export the attendance</button>
     </div>
     <div style="padding-bottom: 20px;" v-else >
       <p>Loading...</p>
