@@ -36,6 +36,8 @@
         <option value="30">30 mins</option>
         <option value="45">45 mins</option>
         <option value="60">1 hour</option>
+        <option value="120">2 hour</option>
+        <option value="180">3 hour</option>
       </select>
     </div>
   </div>
