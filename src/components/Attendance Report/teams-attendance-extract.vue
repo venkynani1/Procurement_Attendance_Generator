@@ -616,42 +616,135 @@ cell.font = {
   },
 };
 </script>
- 
-<style>
-#attendance-form {
-  font-weight: 600;
-}
-#attendance-form button {
-  padding: 6px 18px;
-  background-color: rgb(48, 194, 87);
-  border: none;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-}
-#attendance-form .form-button {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-#attendance-form input[type="file"],
-#attendance-form select {
-  /* background-color: black; */
-  /* background-color: #AB9B96; */
-  padding: 8px 16px;
-  /* border-radius: 10px; */
-  outline: 2px gray solid;
-  /* color: white; */
-}
-#attendance-form select{
-  padding: 8px 0px
-}
-.form-control {
+
+ <style >
+/* Center the form block vertically and horizontally */
+form#w-attendance-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 480px;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  color: #333;
 }
-#attendance-form .form-control label {
-  font-weight: bold;
+
+/* Header style */
+form#w-attendance-form h1 {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: white !important;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form controls styling */
+.form-control {
+  margin-bottom: 20px;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-control label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #2c3e50;
+}
+
+/* Inputs and selects */
+input[type="file"],
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #2575fc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background: #ffffffcc;
+}
+
+input[type="file"]:focus,
+select:focus {
+  border-color: #6a11cb;
+  outline: none;
+  background: #f0e7d8;
+}
+
+/* Radio buttons container */
+.form-control > div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Radio label and input alignment */
+.form-control > div > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row-reverse;
+}
+
+/* Buttons container */
+.form-button {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Button styling */
+button {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(101, 52, 255, 0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #2575fc, #6a11cb);
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(101, 52, 255, 0.7);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Extract result styling */
+.extract-result p {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 8px 0;
+  color: #2c3e50;
+}
+
+/* Span label in extract-result */
+.extract-result span {
+  font-weight: 700;
+  color: #6a11cb;
+}
+
+/* Loading text style */
+div[style*="Loading..."] p {
+  font-weight: 600;
+  color: #2575fc;
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 </style>
