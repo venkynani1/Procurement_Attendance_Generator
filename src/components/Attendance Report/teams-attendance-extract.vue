@@ -616,135 +616,183 @@ cell.font = {
   },
 };
 </script>
+<style>
+  /* Theme variables for easy customization */
+  :root {
+    --color-primary-start: #6a11cb;
+    --color-primary-end: #2575fc;
+    --color-accent-start: #f6d365;
+    --color-accent-end: #fda085;
+    --color-text-primary: #2c3e50;
+    --color-text-secondary: #333333;
+    --color-background-light: #ffffffcc;
+    --color-background-focus: #f0e7d8;
+    --border-radius-base: 8px;
+    --border-radius-large: 15px;
+    --border-radius-pill: 30px;
+    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --box-shadow-light: 0 4px 12px rgba(101, 52, 255, 0.5);
+    --box-shadow-hover: 0 6px 18px rgba(101, 52, 255, 0.7);
+    --transition-speed: 0.3s;
+  }
 
- <style >
-/* Center the form block vertically and horizontally */
-form#w-attendance-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 40px auto;
-  padding: 20px;
-  max-width: 480px;
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-  color: #333;
-}
+  /* Form container centered vertically and horizontally */
+  form#w-attendance-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    padding: 2rem;
+    max-width: 480px;
+    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-base);
+    box-sizing: border-box;
+  }
 
-/* Header style */
-form#w-attendance-form h1 {
-  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-  color: white !important;
-  padding: 12px 0;
-  border-radius: 10px;
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  /* Responsive adjustments */
+  @media (max-width: 520px) {
+    form#w-attendance-form {
+      width: 90%;
+      padding: 1.5rem;
+    }
+  }
 
-/* Form controls styling */
-.form-control {
-  margin-bottom: 20px;
-  width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  /* Form header */
+  form#w-attendance-form__header {
+    background: linear-gradient(90deg, var(--color-primary-start), var(--color-primary-end));
+    color: #fff;
+    padding: 0.75rem 0;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+  }
 
-.form-control label {
-  font-weight: 600;
-  margin-bottom: 6px;
-  display: block;
-  color: #2c3e50;
-}
+  /* Form control container */
+  .form-control {
+    margin-bottom: 1.25rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-/* Inputs and selects */
-input[type="file"],
-select {
-  width: 100%;
-  padding: 10px 15px;
-  border: 2px solid #2575fc;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  background: #ffffffcc;
-}
+  /* Labels */
+  .form-control label {
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    color: var(--color-text-primary);
+  }
 
-input[type="file"]:focus,
-select:focus {
-  border-color: #6a11cb;
-  outline: none;
-  background: #f0e7d8;
-}
+  /* Inputs and selects */
+  input[type="file"],
+  select,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border: 2px solid var(--color-primary-end);
+    border-radius: var(--border-radius-base);
+    font-size: 1rem;
+    background-color: var(--color-background-light);
+    transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    font-family: var(--font-family-base);
+    box-sizing: border-box;
+  }
 
-/* Radio buttons container */
-.form-control > div {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
+  /* Focus states for accessibility */
+  input[type="file"]:focus,
+  select:focus,
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  textarea:focus {
+    border-color: var(--color-primary-start);
+    outline: 3px solid rgba(106, 17, 203, 0.4);
+    background-color: var(--color-background-focus);
+  }
 
-/* Radio label and input alignment */
-.form-control > div > div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-direction: row-reverse;
-}
+  /* Radio buttons container */
+  .form-control__radio-group {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
 
-/* Buttons container */
-.form-button {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
+  /* Radio label and input alignment */
+  .form-control__radio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
 
-/* Button styling */
-button {
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
-  border: none;
-  color: white;
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background 0.4s ease, transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(101, 52, 255, 0.5);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  .form-control__radio input[type="radio"] {
+    cursor: pointer;
+  }
 
-button:hover {
-  background: linear-gradient(45deg, #2575fc, #6a11cb);
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(101, 52, 255, 0.7);
-}
+  /* Buttons container */
+  .form-button {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
 
-button:active {
-  transform: scale(0.95);
-}
+  /* Button styling */
+  button {
+    background: linear-gradient(45deg, var(--color-primary-start), var(--color-primary-end));
+    border: none;
+    color: white;
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-pill);
+    cursor: pointer;
+    transition: background var(--transition-speed) ease, transform 0.2s ease, box-shadow var(--transition-speed) ease;
+    box-shadow: var(--box-shadow-light);
+    font-family: var(--font-family-base);
+    user-select: none;
+  }
 
-/* Extract result styling */
-.extract-result p {
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 8px 0;
-  color: #2c3e50;
-}
+  button:hover,
+  button:focus-visible {
+    background: linear-gradient(45deg, var(--color-primary-end), var(--color-primary-start));
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow-hover);
+    outline: none;
+  }
 
-/* Span label in extract-result */
-.extract-result span {
-  font-weight: 700;
-  color: #6a11cb;
-}
+  button:active {
+    transform: scale(0.95);
+  }
 
-/* Loading text style */
-div[style*="Loading..."] p {
-  font-weight: 600;
-  color: #2575fc;
-  font-size: 1.2rem;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  /* Extract result styling */
+  .extract-result p {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: var(--color-text-primary);
+  }
+
+  /* Span label in extract-result */
+  .extract-result span {
+    font-weight: 700;
+    color: var(--color-primary-start);
+  }
+
+  /* Loading text style */
+  div[style*="Loading..."] p {
+    font-weight: 600;
+    color: var(--color-primary-end);
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: var(--font-family-base);
+  }
 </style>
