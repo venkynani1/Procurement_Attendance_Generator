@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 /* --------------------
-   CORS (FIX)
+   CORS (Express 5 SAFE)
 -------------------- */
 app.use(
   cors({
@@ -23,13 +23,13 @@ app.use(
   })
 );
 
-// VERY IMPORTANT (preflight handler)
-app.options("*", cors());
+// ✅ Express 5 compatible preflight
+app.options(/.*/, cors());
 
 app.use(express.json());
 
 /* --------------------
-   TEMP USERS (in-memory)
+   TEMP USERS
 -------------------- */
 const users = [];
 
@@ -100,7 +100,7 @@ app.post("/api/auth/login", async (req, res) => {
 });
 
 /* --------------------
-   HEALTH CHECK (IMPORTANT)
+   HEALTH CHECK
 -------------------- */
 app.get("/", (req, res) => {
   res.send("Backend is running ✅");
