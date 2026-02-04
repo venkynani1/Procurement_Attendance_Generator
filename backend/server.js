@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 /* --------------------
-   CORS (Express 5 SAFE)
+   CORS (DO NOT ADD app.options)
 -------------------- */
 app.use(
   cors({
@@ -17,19 +17,14 @@ app.use(
       "http://localhost:5173",
       "https://procurement-attendance-generator.vercel.app"
     ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
   })
 );
 
-// ✅ Express 5 compatible preflight
-app.options(/.*/, cors());
-
 app.use(express.json());
 
 /* --------------------
-   TEMP USERS
+   TEMP USERS (in-memory)
 -------------------- */
 const users = [];
 
